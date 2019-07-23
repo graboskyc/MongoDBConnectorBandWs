@@ -25,7 +25,6 @@ class gskymongofactory:
                 return self._conn[db][col].aggregate(pipeline)
             else:
                 raise GskyError("Database not found",None)
-
         except pymongo.errors.OperationFailure as e:
             if(appAutoRetry == 0):
                 raise GskyError("App Retry Count Exceeded: " + e.details['errmsg'],e)
@@ -53,9 +52,10 @@ class gskymongofactory:
                 return self._conn[db][col].insert_one(document, bypass_document_validation=bypassValidation)
             else:
                 raise GskyError("Database not found",None)
-
         except pymongo.errors.OperationFailure as e:
-            if(appAutoRetry == 0):
+            if("not authorized" in e.details['errmsg']):
+                raise GskyError("Permissions Error: " + e.details['errmsg'],e)
+            elif(appAutoRetry == 0):
                 raise GskyError("App Retry Count Exceeded: " + e.details['errmsg'],e)
             else:
                 newRetry = appAutoRetry-1
