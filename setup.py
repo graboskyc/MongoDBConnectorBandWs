@@ -8,9 +8,9 @@ with open("version.txt", "r") as fh:
     vers = fh.read().splitlines()[0]
 
 setup(
-	name='gskymongoconnect',
+	name='gskymongofactory',
 	version=vers,
-	py_modules=['gskymongoconnect'],
+	py_modules=['gskymongofactory'],
 	packages=find_packages(),
 	install_requires=required,
 	long_description=long_description,

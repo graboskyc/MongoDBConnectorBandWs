@@ -6,7 +6,7 @@ def p(r):
         print(doc)
 
 print("===CONNECT===")
-gmf = gskymongofactory("mongodb+srv://atlasroot:password@beta-v9iwf.mongodb.net/test?retryWrites=true&w=majority")
+gmf = gskymongofactory("mongodb+srv://atlasroot:Rnne9y7aRnne9y7a@beta-v9iwf.mongodb.net/test?retryWrites=true&w=majority")
 
 print("===AGG===")
 r = gmf.doAgg('sample_mflix','movies',[{"$sample":{"size":1}}], appAutoRetry=30)
