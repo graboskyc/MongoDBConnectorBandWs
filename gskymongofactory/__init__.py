@@ -7,6 +7,7 @@ class gskymongofactory:
     _dblist = []
     _session = None
 
+    # https://docs.mongodb.com/manual/reference/connection-string/
     def __init__(self, uri):
         self._uri = uri
         try:
